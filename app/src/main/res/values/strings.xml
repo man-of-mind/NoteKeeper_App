@@ -27,4 +27,8 @@
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>
     <string name="communication">Communication</string>
+    <string name="note_title">Note title</string>
+    <string name="note_text">Note text</string>
+    <string name="nav_share_message">Don\'t you think you have shared enough</string>
+    <string name="nav_Send_message">Send</string>
 </resources>
