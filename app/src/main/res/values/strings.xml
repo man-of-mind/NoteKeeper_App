@@ -24,4 +24,7 @@
     <string name="close_res">Close navigation drawer</string>
     <string name="open_res">Open navigation drawer</string>
     <string name="Camera">camera</string>
+    <string name="drawer_open">Drawer Open</string>
+    <string name="drawer_close">Drawer Close</string>
+    <string name="communication">Communication</string>
 </resources>
