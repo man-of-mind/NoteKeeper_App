@@ -1,10 +1,12 @@
 package com.example.notekeeper;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -20,6 +22,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -59,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, NoteActivity.class));
             }
         });
+
+        PreferenceManager.setDefaultValues(this, R.xml.general_preferences, false);
+        PreferenceManager.setDefaultValues(this, R.xml.sync_preferences, false);
+        PreferenceManager.setDefaultValues(this, R.xml.notifications_preferences, false);
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 //        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
@@ -82,7 +90,8 @@ public class MainActivity extends AppCompatActivity {
                     displayCourses();
                 }
                 else if (id == R.id.nav_share){
-                    handleSelection(R.string.nav_share_message);
+                    handleShare();
+//                    handleSelection(R.string.nav_share_message);
                 }
                 else if (id == R.id.nav_send){
                     handleSelection(R.string.nav_Send_message);
@@ -94,12 +103,33 @@ public class MainActivity extends AppCompatActivity {
 
                 return false;
             }
+
+            private void handleShare() {
+                View view = findViewById(R.id.list_items);
+                Snackbar.make(view, "Share to - " +
+                        PreferenceManager.getDefaultSharedPreferences(MainActivity.this).
+                                getString("user_fav_social", ""), Snackbar.LENGTH_LONG).show();
+            }
         });
     }
     @Override
     protected void onResume(){
         super.onResume();
         mNoteRecyclerAdapter.notifyDataSetChanged();
+        updateNavHeader();
+    }
+
+    private void updateNavHeader() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView userName = (TextView) headerView.findViewById(R.id.user_name);
+        TextView email = (TextView) headerView.findViewById(R.id.email_address);
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        String localName = pref.getString("user_display_name", "");
+        String emailAddress = pref.getString("email_address", "");
+        userName.setText(localName);
+        email.setText(emailAddress);
+
     }
 
     private void initializeDisplayContent() {
@@ -152,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             return true;
         }
 

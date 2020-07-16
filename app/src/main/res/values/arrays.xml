@@ -1,12 +1,15 @@
 <resources>
     <!-- Reply Preference -->
-    <string-array name="reply_entries">
-        <item>Reply</item>
-        <item>Reply to all</item>
+    <string-array name="fav_socials_entries">
+        <item>Google+</item>
+        <item>Facebook</item>
+        <item>Twitter</item>
     </string-array>
 
-    <string-array name="reply_values">
-        <item>reply</item>
-        <item>reply_all</item>
+    <string-array name="fav_socials_values">
+        <item>https://www.google.com</item>
+        <item>https://www.facebook.com</item>
+        <item>@string/twitter_link</item>
     </string-array>
+    <string name="twitter_link">https://www.twitter.com</string>
 </resources>

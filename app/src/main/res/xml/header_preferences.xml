@@ -1,0 +1,20 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        app:fragment="com.example.notekeeper.SettingsActivity$GeneralFragment"
+        app:icon="@drawable/ic_baseline_new_releases_24"
+        app:key="general_header"
+        app:title="@string/general_header" />
+
+    <Preference
+        app:fragment="com.example.notekeeper.SettingsActivity$SyncFragment"
+        app:icon="@drawable/sync"
+        app:key="sync_header"
+        app:title="@string/sync_header" />
+    <Preference
+        app:fragment="com.example.notekeeper.SettingsActivity$NotificationFragment"
+        app:icon="@drawable/ic_baseline_notifications_24"
+        app:key="notifications_header"
+        app:title="Notifications" />
+
+</PreferenceScreen>

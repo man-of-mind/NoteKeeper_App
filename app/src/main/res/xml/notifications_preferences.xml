@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <SwitchPreference
+        android:key="allow_notifications"
+        android:title="Allow Notifications"
+        app:defaultValue="true"
+        app:summary=""
+        android:summaryOn="true"/>
+    <EditTextPreference
+        android:title="Sample"
+        android:key="sample"
+        android:summaryOn="true"
+        app:useSimpleSummaryProvider="true"/>
+    <ListPreference
+        android:title="Favorite Socials"
+        android:key="fav_socials"
+        android:entryValues="@array/fav_socials_values"
+        android:entries="@array/fav_socials_entries"
+        android:defaultValue="@string/twitter_link"
+        app:useSimpleSummaryProvider="true"/>
+</PreferenceScreen>
