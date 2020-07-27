@@ -3,6 +3,7 @@ package com.example.notekeeper;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -17,6 +18,9 @@ public class NoteKeeperOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(NoteKeeperDatabaseContract.CourseInfoEntry.SQL_CREATE_TABLE);
         sqLiteDatabase.execSQL(NoteKeeperDatabaseContract.NoteInfoEntry.SQL_CREATE_TABLE);
+        DatabaseDataWorker worker = new DatabaseDataWorker(sqLiteDatabase);
+        worker.insertCourses();
+        worker.insertSampleNotes();
     }
 
     @Override
