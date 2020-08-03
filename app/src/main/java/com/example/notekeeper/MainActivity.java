@@ -159,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerItem.setLayoutManager(mNotesLayoutManager);
         mRecyclerItem.setAdapter(mNoteRecyclerAdapter);
 
-
         selectNavigationMenuItem(R.id.nav_notes);
     }
 
