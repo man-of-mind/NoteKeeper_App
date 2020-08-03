@@ -45,6 +45,24 @@ public class DataManager {
         loadNotesFromDatabase(noteCursor);
     }
 
+
+
+    private static void loadCoursesFromDatabase(Cursor cursor) {
+        int courseIdPos = cursor.getColumnIndex(CourseInfoEntry.COLUMN_COURSE_ID);
+        int courseTitlePos = cursor.getColumnIndex(CourseInfoEntry.COLUMN_COURSE_TITLE);
+
+        DataManager dm = getInstance();
+        dm.mCourses.clear();
+        while (cursor.moveToNext()){
+            String courseId = cursor.getString(courseIdPos);
+            String courseTitle = cursor.getString(courseTitlePos);
+            CourseInfo courses = new CourseInfo(courseId, courseTitle, null);
+
+            dm.mCourses.add(courses);
+        }
+        cursor.close();
+    }
+
     private static void loadNotesFromDatabase(Cursor cursor) {
         int noteTitlePos = cursor.getColumnIndex(NoteInfoEntry.COLUMN_NOTE_TITLE);
         int noteTextPos = cursor.getColumnIndex(NoteInfoEntry.COLUMN_NOTE_TEXT);
@@ -60,22 +78,6 @@ public class DataManager {
             CourseInfo noteCourse = dm.getCourse(courseId);
             NoteInfo note = new NoteInfo(noteCourse, noteTitle, noteText);
             dm.mNotes.add(note);
-        }
-        cursor.close();
-    }
-
-    private static void loadCoursesFromDatabase(Cursor cursor) {
-        int courseIdPos = cursor.getColumnIndex(CourseInfoEntry.COLUMN_COURSE_ID);
-        int courseTitlePos = cursor.getColumnIndex(CourseInfoEntry.COLUMN_COURSE_TITLE);
-
-        DataManager dm = getInstance();
-        dm.mCourses.clear();
-        while (cursor.moveToNext()){
-            String courseId = cursor.getString(courseIdPos);
-            String courseTitle = cursor.getString(courseTitlePos);
-            CourseInfo courses = new CourseInfo(courseId, courseTitle, null);
-
-            dm.mCourses.add(courses);
         }
         cursor.close();
     }
