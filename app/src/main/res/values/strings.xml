@@ -49,4 +49,7 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="general_header">General</string>
+    <string name="cancel">Cancel</string>
+    <string name="send_as_mail">Send as mail</string>
+    <string name="next_item">Next</string>
 </resources>
