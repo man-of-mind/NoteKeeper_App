@@ -18,4 +18,8 @@
         android:title="@string/next_item"
         android:visible="false"
         app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/action_set_reminder"
+        android:title="@string/set_reminder"
+        app:showAsAction="never" />
 </menu>
