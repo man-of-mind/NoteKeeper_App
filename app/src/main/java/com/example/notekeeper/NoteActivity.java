@@ -337,9 +337,9 @@ public class NoteActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        if (loader.getId() == LOADER_NOTES)
+        if (loader.getId() == LOADER_NOTES) {
             loadFinishedNotes(data);
-        else if (loader.getId() == LOADER_COURSES) {
+        } else if (loader.getId() == LOADER_COURSES) {
             mAdapterCourses.changeCursor(data);
             mCoursesQueryFinished = true;
             displayNoteWhenQueriesFinished();
